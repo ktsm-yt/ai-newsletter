@@ -49,3 +49,26 @@ def test_post_message_raises_on_api_error() -> None:
 
     with pytest.raises(SlackError, match="not_in_channel"):
         post_message("hello", channel="C123", token="xoxb-test")
+
+
+def test_post_message_raises_when_token_is_empty() -> None:
+    with pytest.raises(SlackError, match="SLACK_BOT_TOKEN is empty"):
+        post_message("hello", channel="C123", token="")
+
+
+def test_post_message_raises_when_channel_is_empty() -> None:
+    with pytest.raises(SlackError, match="SLACK_CHANNEL_ID is empty"):
+        post_message("hello", channel="", token="xoxb-test")
+
+
+@respx.mock
+def test_post_message_strips_whitespace_from_token_and_channel() -> None:
+    # GitHub Secrets / .env からの値に紛れ込んだ改行や空白を吸収する
+    respx.post(SLACK_URL).mock(return_value=httpx.Response(200, json={"ok": True}))
+
+    post_message("hi", channel="  C123\n", token="\txoxb-test\n")
+
+    sent = respx.calls.last.request
+    assert sent.headers["authorization"] == "Bearer xoxb-test"
+    body = json.loads(sent.read())
+    assert body["channel"] == "C123"
