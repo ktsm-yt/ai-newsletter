@@ -93,7 +93,7 @@ Test policy: layered-lite
     - 失敗時: 該当件を skip して log、配信は続行
     - integration: Gemini API mock、JSON schema パース成功
 
-- cc:TODO 1.1.C.3 Block Kit で 1 投稿に 10 件整形 + 投稿
+- cc:完了 1.1.C.3 Block Kit で 1 投稿に 10 件整形 + 投稿
   - DoD:
     - `src/ai_newsletter/render.py` で Block Kit JSON を組み立て
     - 1 件あたり: タイトル (リンク付き header) / カテゴリ / 要約3行 / 注目理由 / 使いどころ / 定量 / 信頼度 / 採用理由 / 優先度 / フィードバック URL ボタン (v0.2 までは placeholder URL)
