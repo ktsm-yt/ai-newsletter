@@ -14,7 +14,8 @@ dist/
 venv/
 .env
 .env.*
-!.env.example
+
+# .env テンプレは hook で .env* が全 deny されるため env.example として配置 (dot 無し)
 
 # Editor / OS
 .DS_Store
