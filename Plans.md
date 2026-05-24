@@ -113,7 +113,7 @@ Test policy: layered-lite
 
 ### E. 仕上げ
 
-- cc:TODO 1.1.E.1 README にセットアップ・運用手順を追記
+- cc:完了 1.1.E.1 README にセットアップ・運用手順を追記
   - DoD:
     - 必要な Secrets 一覧 / 初回 setup 手順 / 手動再実行コマンド / フィードバック確認方法 (v0.1 では URL placeholder と明記)
     - 要求定義 §13 成功条件の現状を README にチェックリスト化
