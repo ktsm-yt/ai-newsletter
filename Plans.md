@@ -74,7 +74,7 @@ Test policy: layered-lite
 
 ### C. 加工と配信 (分類 → スコア → 抽出 → 要約 → 投稿)
 
-- cc:TODO 1.1.C.1 カテゴリ分類 + 除外フィルタ + スコアリング → 10件抽出
+- cc:完了 1.1.C.1 カテゴリ分類 + 除外フィルタ + スコアリング → 10件抽出
   - DoD:
     - `src/ai_newsletter/pipeline.py`
     - 分類: title/url keyword で AI開発ツール / AIエージェントTips / 新サービス / その他 にラベル付け
