@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v8
+        uses: astral-sh/setup-uv@v8.1.0  # v8 から immutable releases、major tag は無いので full tag 指定
         with:
           enable-cache: true
 
