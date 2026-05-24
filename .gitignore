@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# uv / venv
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Project caches
+.cache/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Claude / harness session state (do not commit transient state)
+.claude/state/
+.claude/sessions/
+.claude/projects/
+.claude/active-context.md
