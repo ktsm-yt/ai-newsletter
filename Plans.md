@@ -103,7 +103,7 @@ Test policy: layered-lite
 
 ### D. 統合 + cron 有効化
 
-- cc:TODO 1.1.D.1 entrypoint `scripts/daily.py` と Actions cron 起動
+- cc:完了 1.1.D.1 entrypoint `scripts/daily.py` と Actions cron 起動
   - DoD:
     - `scripts/daily.py` = B クライアント並列 fetch → C パイプライン → Slack 投稿
     - `.github/workflows/daily.yml` を `cron: '0 22 * * *'` (UTC 22:00 = JST 07:00) で有効化、`workflow_dispatch` も残す
