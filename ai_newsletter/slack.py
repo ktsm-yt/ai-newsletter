@@ -26,8 +26,14 @@ def post_message(
     channel / token を省略した場合は環境変数 SLACK_CHANNEL_ID / SLACK_BOT_TOKEN を読む。
     client を渡せばその httpx.Client を使う (test や接続再利用向け)。
     """
-    channel = channel if channel is not None else os.environ["SLACK_CHANNEL_ID"]
-    token = token if token is not None else os.environ["SLACK_BOT_TOKEN"]
+    # GitHub Secrets / .env から来た値は末尾改行や空白が混入することがある (header として違法に
+    # なるので strip)。値が空なら Slack へリクエストする前に分かりやすく失敗させる。
+    channel = (channel if channel is not None else os.environ.get("SLACK_CHANNEL_ID", "")).strip()
+    token = (token if token is not None else os.environ.get("SLACK_BOT_TOKEN", "")).strip()
+    if not token:
+        raise SlackError("SLACK_BOT_TOKEN is empty (set the env var or pass token=)")
+    if not channel:
+        raise SlackError("SLACK_CHANNEL_ID is empty (set the env var or pass channel=)")
 
     payload: dict[str, Any] = {"channel": channel, "text": text}
     if blocks is not None:
