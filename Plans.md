@@ -84,7 +84,7 @@ Test policy: layered-lite
     - 不足時: 候補数分だけ採用し、不足理由を log
     - unit: 与えた `RawItem` リストから配分通りの 10 件が返ること、除外語が落ちること
 
-- cc:TODO 1.1.C.2 Gemini 3.5 Flash 要約 + 採用理由 + 信頼度生成
+- cc:完了 1.1.C.2 Gemini 要約 + 採用理由 + 信頼度生成 (default: gemini-3.0-flash)
   - DoD:
     - `src/ai_newsletter/llm.py`
     - `google-genai` SDK 利用、`GEMINI_API_KEY` Secrets
