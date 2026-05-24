@@ -15,10 +15,11 @@ from ai_newsletter.models import RawItem
 
 HN_API_BASE = "https://hacker-news.firebaseio.com/v0"
 
-# 初期案 (Plans.md L55 で user 確定済、2026-05-24):
-# ai|llm|gpt|claude|gemini|agent|copilot|anthropic|openai|huggingface|rag|fine-tuning
+# 初期案 (Plans.md L55, 2026-05-24) + 拡張 (smoke test で brand 名偏りが判明、2026-05-24)
 # - word boundary でマッチさせ "main" の "ai" 等を弾く
 # - case-insensitive
+# - 拡張分: 一般語 (deep learning / neural network / machine learning / transformer /
+#   embedding / inference) と open-weight 系 brand (mistral / llama)、AI IDE (cursor)
 AI_KEYWORDS = (
     "ai",
     "llm",
@@ -32,6 +33,15 @@ AI_KEYWORDS = (
     "huggingface",
     "rag",
     "fine-tuning",
+    "deep learning",
+    "neural network",
+    "machine learning",
+    "transformer",
+    "embedding",
+    "inference",
+    "mistral",
+    "llama",
+    "cursor",
 )
 _AI_PATTERN = re.compile(
     r"\b(?:" + "|".join(re.escape(k) for k in AI_KEYWORDS) + r")\b",

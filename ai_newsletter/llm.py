@@ -15,7 +15,7 @@ from ai_newsletter.models import RawItem
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_MODEL = "gemini-3.0-flash"
+DEFAULT_MODEL = "gemini-3.1-flash-lite"
 
 # 信頼度・優先度の取りうる値 (Slack 投稿時の表示もこれに揃える)
 TRUST_VALUES = ("高", "中", "低")

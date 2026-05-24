@@ -4,7 +4,7 @@
 
 - 重点: AI 開発ツール / AI エージェント実装 Tips / 新サービス
 - 除外: 投資・資金調達ニュース、一般向け AI ニュース、宣伝色の強い記事
-- 構成: GitHub Actions (日次 cron) + Python + Gemini (default `gemini-3.0-flash`) + Slack Bot (chat.postMessage) + Google Apps Script + Sheets (フィードバック保存は v0.2 以降)
+- 構成: GitHub Actions (日次 cron) + Python + Gemini (default `gemini-3.1-flash-lite`) + Slack Bot (chat.postMessage) + Google Apps Script + Sheets (フィードバック保存は v0.2 以降)
 
 詳細な要求定義は [docs/requirements.md](docs/requirements.md) を参照。
 
@@ -24,7 +24,7 @@ cp env.example .env
 | サービス | 取得手順 | env 変数 |
 |---|---|---|
 | Slack Bot Token | [docs/setup-slack-app.md](docs/setup-slack-app.md) | `SLACK_BOT_TOKEN` / `SLACK_CHANNEL_ID` |
-| Gemini API Key  | https://aistudio.google.com/apikey (無料枠で 1 日 10 件は余裕) | `GEMINI_API_KEY` (任意: `GEMINI_MODEL`) |
+| Gemini API Key  | https://aistudio.google.com/apikey (無料枠で 1 日 10 件は余裕) | `GEMINI_API_KEY` (任意: `GEMINI_MODEL` で `gemini-2.5-flash` 等に切替可) |
 | GitHub Token    | https://github.com/settings/tokens (fine-grained, `public_repo` 読み取り) | `GH_TOKEN` |
 | Reddit OAuth    | https://www.reddit.com/prefs/apps で **script app** 作成 | `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET` / `REDDIT_USER_AGENT` |
 
