@@ -33,7 +33,7 @@ Test policy: layered-lite
     - unit: respx で `chat.postMessage` を mock、payload に channel/text が入ること
   - 依存: A.1 (token 取得済)
 
-- cc:TODO 1.1.A.3 GitHub Actions の手動実行 workflow (initial)
+- cc:WIP 1.1.A.3 GitHub Actions の手動実行 workflow (initial)
   - DoD:
     - `.github/workflows/daily.yml` に `workflow_dispatch` トリガと cron スタブ (cron はコメントアウト or `if: false` で M1 末まで休止)
     - job 内で `uv sync` → `python scripts/send_hello.py`
