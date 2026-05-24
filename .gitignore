@@ -37,3 +37,6 @@ venv/
 
 # harness の progress tracker 生成物
 out/
+
+# Star snapshot (Actions cache で永続化、git には載せない)
+data/

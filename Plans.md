@@ -55,7 +55,7 @@ Test policy: layered-lite
     - AI 関連語 (要 user 確認、初期案: `ai|llm|gpt|claude|gemini|agent|copilot|anthropic|openai|huggingface|rag|fine-tuning`) で title フィルタ
     - integration: respx で firebaseio mock、フィルタ後に AI 関連だけ残ること
 
-- cc:TODO 1.1.B.2 GitHub trending client (Star 急増)
+- cc:完了 1.1.B.2 GitHub trending client (Star 急増)
   - DoD:
     - `src/ai_newsletter/sources/github_trending.py`
     - GitHub Search API で `language:Python topic:llm-agent created:>N-days` 等 (条件 user 確認)
