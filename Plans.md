@@ -33,7 +33,7 @@ Test policy: layered-lite
     - unit: respx で `chat.postMessage` を mock、payload に channel/text が入ること
   - 依存: A.1 (token 取得済)
 
-- cc:WIP 1.1.A.3 GitHub Actions の手動実行 workflow (initial)
+- cc:完了 1.1.A.3 GitHub Actions の手動実行 workflow (initial)
   - DoD:
     - `.github/workflows/daily.yml` に `workflow_dispatch` トリガと cron スタブ (cron はコメントアウト or `if: false` で M1 末まで休止)
     - job 内で `uv sync` → `python scripts/send_hello.py`
@@ -48,14 +48,14 @@ Test policy: layered-lite
 
 着手前に subreddit / GitHub 検索条件 / HN スコアしきい値の **具体リスト** を user と確定する (要求定義 §11 TBD の解消)。
 
-- cc:TODO 1.1.B.1 Hacker News API client
+- cc:完了 1.1.B.1 Hacker News API client
   - DoD:
     - `src/ai_newsletter/sources/hackernews.py`
     - `https://hacker-news.firebaseio.com/v0/topstories.json` → 上位 N (e.g. 200) → 各 item の score / title / url を取得
     - AI 関連語 (要 user 確認、初期案: `ai|llm|gpt|claude|gemini|agent|copilot|anthropic|openai|huggingface|rag|fine-tuning`) で title フィルタ
     - integration: respx で firebaseio mock、フィルタ後に AI 関連だけ残ること
 
-- cc:TODO 1.1.B.2 GitHub trending client (Star 急増)
+- cc:完了 1.1.B.2 GitHub trending client (Star 急増)
   - DoD:
     - `src/ai_newsletter/sources/github_trending.py`
     - GitHub Search API で `language:Python topic:llm-agent created:>N-days` 等 (条件 user 確認)
@@ -64,7 +64,7 @@ Test policy: layered-lite
     - integration: GitHub API mock、snapshot 差分計算の unit
     - **設計判断**: rate limit (60 req/h 認証なし、5000 req/h with token) → 認証必須化、`GH_TOKEN` Secrets 追加
 
-- cc:TODO 1.1.B.3 Reddit client
+- cc:完了 1.1.B.3 Reddit client
   - DoD:
     - `src/ai_newsletter/sources/reddit.py`
     - 対象 subreddit (要 user 確認、初期案: `LocalLLaMA, MachineLearning, singularity, OpenAI, ClaudeAI`)
@@ -74,7 +74,7 @@ Test policy: layered-lite
 
 ### C. 加工と配信 (分類 → スコア → 抽出 → 要約 → 投稿)
 
-- cc:TODO 1.1.C.1 カテゴリ分類 + 除外フィルタ + スコアリング → 10件抽出
+- cc:完了 1.1.C.1 カテゴリ分類 + 除外フィルタ + スコアリング → 10件抽出
   - DoD:
     - `src/ai_newsletter/pipeline.py`
     - 分類: title/url keyword で AI開発ツール / AIエージェントTips / 新サービス / その他 にラベル付け
@@ -84,7 +84,7 @@ Test policy: layered-lite
     - 不足時: 候補数分だけ採用し、不足理由を log
     - unit: 与えた `RawItem` リストから配分通りの 10 件が返ること、除外語が落ちること
 
-- cc:TODO 1.1.C.2 Gemini 3.5 Flash 要約 + 採用理由 + 信頼度生成
+- cc:完了 1.1.C.2 Gemini 要約 + 採用理由 + 信頼度生成 (default: gemini-3.0-flash)
   - DoD:
     - `src/ai_newsletter/llm.py`
     - `google-genai` SDK 利用、`GEMINI_API_KEY` Secrets
@@ -93,7 +93,7 @@ Test policy: layered-lite
     - 失敗時: 該当件を skip して log、配信は続行
     - integration: Gemini API mock、JSON schema パース成功
 
-- cc:TODO 1.1.C.3 Block Kit で 1 投稿に 10 件整形 + 投稿
+- cc:完了 1.1.C.3 Block Kit で 1 投稿に 10 件整形 + 投稿
   - DoD:
     - `src/ai_newsletter/render.py` で Block Kit JSON を組み立て
     - 1 件あたり: タイトル (リンク付き header) / カテゴリ / 要約3行 / 注目理由 / 使いどころ / 定量 / 信頼度 / 採用理由 / 優先度 / フィードバック URL ボタン (v0.2 までは placeholder URL)
@@ -103,7 +103,7 @@ Test policy: layered-lite
 
 ### D. 統合 + cron 有効化
 
-- cc:TODO 1.1.D.1 entrypoint `scripts/daily.py` と Actions cron 起動
+- cc:完了 1.1.D.1 entrypoint `scripts/daily.py` と Actions cron 起動
   - DoD:
     - `scripts/daily.py` = B クライアント並列 fetch → C パイプライン → Slack 投稿
     - `.github/workflows/daily.yml` を `cron: '0 22 * * *'` (UTC 22:00 = JST 07:00) で有効化、`workflow_dispatch` も残す
@@ -113,7 +113,7 @@ Test policy: layered-lite
 
 ### E. 仕上げ
 
-- cc:TODO 1.1.E.1 README にセットアップ・運用手順を追記
+- cc:完了 1.1.E.1 README にセットアップ・運用手順を追記
   - DoD:
     - 必要な Secrets 一覧 / 初回 setup 手順 / 手動再実行コマンド / フィードバック確認方法 (v0.1 では URL placeholder と明記)
     - 要求定義 §13 成功条件の現状を README にチェックリスト化

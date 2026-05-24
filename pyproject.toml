@@ -5,6 +5,7 @@ description = "Daily AI dev newsletter to Slack (overseas sources, JP summary)"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "google-genai>=2.6.0",
     "httpx>=0.28.1",
     "python-dotenv>=1.2.2",
 ]
