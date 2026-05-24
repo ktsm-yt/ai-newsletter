@@ -48,7 +48,7 @@ Test policy: layered-lite
 
 着手前に subreddit / GitHub 検索条件 / HN スコアしきい値の **具体リスト** を user と確定する (要求定義 §11 TBD の解消)。
 
-- cc:TODO 1.1.B.1 Hacker News API client
+- cc:完了 1.1.B.1 Hacker News API client
   - DoD:
     - `src/ai_newsletter/sources/hackernews.py`
     - `https://hacker-news.firebaseio.com/v0/topstories.json` → 上位 N (e.g. 200) → 各 item の score / title / url を取得
