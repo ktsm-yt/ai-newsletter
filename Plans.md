@@ -64,7 +64,7 @@ Test policy: layered-lite
     - integration: GitHub API mock、snapshot 差分計算の unit
     - **設計判断**: rate limit (60 req/h 認証なし、5000 req/h with token) → 認証必須化、`GH_TOKEN` Secrets 追加
 
-- cc:TODO 1.1.B.3 Reddit client
+- cc:完了 1.1.B.3 Reddit client
   - DoD:
     - `src/ai_newsletter/sources/reddit.py`
     - 対象 subreddit (要 user 確認、初期案: `LocalLLaMA, MachineLearning, singularity, OpenAI, ClaudeAI`)
