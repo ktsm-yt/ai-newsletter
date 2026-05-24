@@ -34,3 +34,6 @@ venv/
 .claude/sessions/
 .claude/projects/
 .claude/active-context.md
+
+# harness の progress tracker 生成物
+out/

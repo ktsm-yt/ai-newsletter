@@ -18,14 +18,14 @@ Test policy: layered-lite
 
 ### A. Setup (Slack App + Secrets + Actions 雛形)
 
-- cc:TODO 1.1.A.1 Slack App 作成手順 doc と env テンプレ
+- cc:完了 1.1.A.1 Slack App 作成手順 doc と env テンプレ
   - DoD:
     - `docs/setup-slack-app.md` に手順 (App 作成 → Bot Token scope `chat:write` 付与 → channel invite)
     - `.env.example` に `SLACK_BOT_TOKEN` / `SLACK_CHANNEL_ID` を記載
     - README に「セットアップ」セクションを追加し doc へリンク
   - 完了確認: user が手順どおりに Slack App を作って channel ID を取得できた
 
-- cc:TODO 1.1.A.2 Slack 投稿の最小実装 (固定文字列を投稿できる)
+- cc:完了 1.1.A.2 Slack 投稿の最小実装 (固定文字列を投稿できる)
   - DoD:
     - `src/ai_newsletter/slack.py` に `post_message(text: str, blocks: list | None) -> None`
     - `python-dotenv` で `.env` 読み、`httpx` で `chat.postMessage` 直叩き (SDK 入れずに薄く)
@@ -135,8 +135,12 @@ Test policy: layered-lite
 
 ## 進捗マーカー凡例
 
-- `cc:TODO` 未着手
-- `cc:WIP` 着手中 (1 タスクに 1 つだけ)
-- `cc:完了` 完了
+`cc` で始まるマーカーで管理 (harness-work が更新):
 
-(harness-work が更新)
+| マーカー | 意味 |
+|---|---|
+| TODO  | 未着手 |
+| WIP   | 着手中 (1 タスクに 1 つだけ) |
+| 完了  | 完了 |
+
+(凡例行を grep に拾わせないため bullet/コードブロック表記は避けている)
